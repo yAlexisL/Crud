@@ -1,0 +1,77 @@
+<%- include ('partials/_header') %>
+
+
+<div class="container tabla-centrada">
+        <div class="col-md-5">
+          <div class="card">
+            <div class="card-body">
+                <form action="/add" method="post">
+                    <div class="form-group">
+                        <input type="tel" name="cedula" placeholder="Cedula" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="nombres" placeholder="Nombres" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="apellidos" placeholder="Apellidos" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="correo" placeholder="Correo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="ciudad" placeholder="Ciudad" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                     Guardar 
+                    </button>
+                </form>
+            </div>
+          </div>
+        </div>
+    </div> 
+</div>
+</div>
+
+<div class="container tabla-centrada">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead >
+                    <tr>
+                        <th>n°</th>
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Ciudad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data) { %>
+                    <% for (var i = 0, l = 1; i < data.length; i++) { %>
+                        <tr>
+                            <td><%= (i + l) %></td>
+                            <!-- Otros elementos de la tabla -->
+                            <td><%= data[i].cedula %></td>
+                            <td><%= data[i].nombres %></td>
+                            <td><%= data[i].apellidos %></td>
+                            <td><%= data[i].correo %></td>
+                            <td><%= data[i].ciudad %></td>
+                            <td>
+                                
+                              <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>  
+                              <a href="/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>  
+                            </td>
+                        </tr>
+                    <% } %>
+                    <% } %>      
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<%- include('partials/_footer') %>
+
+ 
